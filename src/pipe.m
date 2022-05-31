@@ -165,7 +165,7 @@ XPC_CLASS_HEADER(pipe);
 	mach_msg_return_t ret = MACH_MSG_SUCCESS;
 
 retry:
-	[message release];
+	if (message != NULL) { [message release]; }
 	message = dispatch_mach_msg_create(NULL, messageSize, DISPATCH_MACH_MSG_DESTRUCTOR_DEFAULT, &header);
 	if (!message) {
 		status = ENOMEM;
