@@ -63,6 +63,7 @@ xpc_object_t xpc_create_reply_with_format(xpc_object_t original, const char * fo
 
 xpc_object_t xpc_create_from_plist(const void *data, size_t size);
 
+void xpc_connection_get_audit_token(xpc_connection_t connection, audit_token_t* token);
 void xpc_dictionary_get_audit_token(xpc_object_t, audit_token_t *);
 
 void xpc_connection_set_target_uid(xpc_connection_t connection, uid_t uid);
