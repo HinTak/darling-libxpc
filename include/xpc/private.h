@@ -140,6 +140,20 @@ const char* xpc_type_get_name(xpc_type_t xtype);
 
 xpc_connection_t xpc_connection_create_listener(const char* name, dispatch_queue_t queue);
 
+XPC_EXPORT int xpc_event_publisher_fire_noboost(xpc_event_publisher_t xpub, uint64_t token, xpc_object_t details);
+
+XPC_EXPORT xpc_object_t xpc_event_publisher_create(const char* name, void* some_parameter);
+
+XPC_EXPORT void xpc_event_publisher_set_handler(xpc_event_publisher_t xpub, void (^handler)());
+
+XPC_EXPORT void xpc_event_publisher_set_error_handler(xpc_event_publisher_t xpub, void (^handler)());
+
+XPC_EXPORT void xpc_event_publisher_activate(xpc_event_publisher_t xpub);
+
+XPC_EXPORT au_asid_t xpc_event_publisher_get_subscriber_asid(xpc_event_publisher_t xpub, uint64_t token);
+
+XPC_EXPORT void xpc_track_activity(void);
+
 __END_DECLS
 
 #endif
