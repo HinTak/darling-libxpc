@@ -1,23 +1,25 @@
+/**
+ * This file is part of Darling.
+ *
+ * Copyright (C) 2023 Darling developers
+ *
+ * Darling is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Darling is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Darling.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #ifndef __XPC_DEBUG_H__
 #define __XPC_DEBUG_H__
 
-/*!
- * @function xpc_debugger_api_misuse_info
- * Returns a pointer to a string describing the reason XPC aborted the calling
- * process. On OS X, this will be the same string present in the "Application
- * Specific Information" section of the crash report.
- * 
- * @result
- * A pointer to the human-readable string describing the reason the caller was
- * aborted. If XPC was not responsible for the program's termination, NULL will
- * be returned.
- *
- * @discussion
- * This function is only callable from within a debugger. It is not meant to be
- * called by the program directly.
- */
-XPC_DEBUGGER_EXCL
-const char *
-xpc_debugger_api_misuse_info(void);
+const char * xpc_debugger_api_misuse_info(void);
 
 #endif // __XPC_DEBUG_H__ 

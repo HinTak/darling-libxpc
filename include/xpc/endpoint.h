@@ -1,22 +1,25 @@
+/**
+ * This file is part of Darling.
+ *
+ * Copyright (C) 2023 Darling developers
+ *
+ * Darling is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Darling is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Darling.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #ifndef __XPC_ENDPOINT_H__
 #define __XPC_ENDPOINT_H__
 
-/*!
- * @function xpc_endpoint_create
- * Creates a new endpoint from a connection that is suitable for embedding into
- * messages.
- * 
- * @param connection
- * Only connections obtained through calls to xpc_connection_create*() may be
- * given to this API. Passing any other type of connection is not supported and
- * will result in undefined behavior.
- *
- * @result
- * A new endpoint object. 
- */
-__OSX_AVAILABLE_STARTING(__MAC_10_7, __IPHONE_5_0)
-XPC_EXPORT XPC_MALLOC XPC_RETURNS_RETAINED XPC_WARN_RESULT XPC_NONNULL1
-xpc_endpoint_t
-xpc_endpoint_create(xpc_connection_t connection);
+xpc_endpoint_t xpc_endpoint_create(xpc_connection_t connection);
 
 #endif // __XPC_ENDPOINT_H__ 
