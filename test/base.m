@@ -20,6 +20,8 @@
 #include "ctest-plus.h"
 #import <xpc/xpc.h>
 
+xpc_object_t xpc_copy(xpc_object_t object);
+
 // this basic testing is related to the basic C API for objects and the base behavior of objects.
 // for this purpose, we use int64 objects, as they're simple enough that they should never pose a problem.
 // any issues with testing them should come from the xpc_object base class.

@@ -101,9 +101,11 @@ XPC_DECL(xpc_endpoint);
 #define XPC_TYPE_UUID (&_xpc_type_uuid)
 
 #define XPC_BOOL_TRUE XPC_GLOBAL_OBJECT(_xpc_bool_true)
+#define XPC_BOOL_FALSE XPC_GLOBAL_OBJECT(_xpc_bool_false)
 #define XPC_ERROR_KEY_DESCRIPTION _xpc_error_key_description
 
 XPC_EXPORT const struct _xpc_bool_s _xpc_bool_true;
+XPC_EXPORT const struct _xpc_bool_s _xpc_bool_false;
 XPC_EXPORT const char * const _xpc_error_key_description;
 
 typedef void (*xpc_connection_handler_t)(xpc_connection_t connection);
@@ -130,6 +132,7 @@ xpc_object_t xpc_null_create(void);
 xpc_object_t xpc_pointer_create(void* value);
 xpc_object_t xpc_string_create(const char *string);
 xpc_object_t xpc_string_create_with_format_and_arguments(const char *fmt, va_list ap);
+xpc_object_t xpc_string_create_with_format(const char* format, ...);
 xpc_object_t xpc_uint64_create(uint64_t value);
 xpc_object_t xpc_uuid_create(const unsigned char *uuid);
 
@@ -141,6 +144,8 @@ void* _Nullable xpc_pointer_get_value(xpc_object_t xptr);
 const char * xpc_string_get_string_ptr(xpc_object_t xstring);
 uint64_t xpc_uint64_get_value(xpc_object_t xuint);
 const uint8_t * xpc_uuid_get_bytes(xpc_object_t xuuid);
+
+size_t xpc_string_get_length(xpc_object_t xstring);
 
 xpc_object_t xpc_data_create_with_dispatch_data(dispatch_data_t ddata);
 size_t xpc_data_get_bytes(xpc_object_t xdata, void *buffer, size_t off, size_t length);
@@ -154,6 +159,7 @@ const void * xpc_array_get_data(xpc_object_t xarray, size_t index, size_t *lengt
 void* _Nullable xpc_array_get_pointer(xpc_object_t xarray, size_t index);
 const char * xpc_array_get_string(xpc_object_t xarray, size_t index);
 uint64_t xpc_array_get_uint64(xpc_object_t xarray, size_t index);
+int64_t xpc_array_get_int64(xpc_object_t xarray, size_t index);
 const uint8_t * xpc_array_get_uuid(xpc_object_t xarray, size_t index);
 xpc_object_t xpc_array_get_value(xpc_object_t xarray, size_t index);
 void xpc_array_set_data(xpc_object_t xarray, size_t index, const void *bytes, size_t length);
@@ -185,6 +191,7 @@ void xpc_dictionary_set_string(xpc_object_t xdict, const char *key, const char *
 void xpc_dictionary_set_uint64(xpc_object_t xdict, const char *key, uint64_t value);
 void xpc_dictionary_set_uuid(xpc_object_t xdict, const char *key, const unsigned char *uuid);
 void xpc_dictionary_set_value(xpc_object_t xdict, const char *key, xpc_object_t value);
+xpc_connection_t xpc_dictionary_create_connection(xpc_object_t xdict, const char* key);
 
 char * xpc_copy_description(xpc_object_t object);
 bool xpc_equal(xpc_object_t object1, xpc_object_t object2);
