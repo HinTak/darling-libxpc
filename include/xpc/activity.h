@@ -47,7 +47,10 @@ XPC_EXPORT const char * XPC_ACTIVITY_DELAY;
 XPC_EXPORT const char * XPC_ACTIVITY_GRACE_PERIOD;
 XPC_EXPORT const char * XPC_ACTIVITY_PRIORITY;
 XPC_EXPORT const char * XPC_ACTIVITY_PRIORITY_MAINTENANCE;
+XPC_EXPORT const char * XPC_ACTIVITY_PRIORITY_UTILITY;
 XPC_EXPORT const char * XPC_ACTIVITY_REPEATING;
+XPC_EXPORT const char * XPC_ACTIVITY_INTERVAL;
+XPC_EXPORT const char * XPC_ACTIVITY_REQUIRE_NETWORK_CONNECTIVITY;
 
 xpc_activity_state_t xpc_activity_get_state(xpc_activity_t activity);
 void xpc_activity_register(const char *identifier, xpc_object_t criteria, xpc_activity_handler_t handler);
